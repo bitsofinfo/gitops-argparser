@@ -61,6 +61,22 @@ Create a file called `output.tmpl`
 
 We can see it validates the arguments and converts them to Azure *log commands* which will set variables in a pipeline.
 
+If you call it with nothing you get the defaults:
+```
+> ./gitops-argparser 
+
+{"level":"debug","msg":"loadArgumentsConf(): reading argparser arguments conf from: config.yaml","time":"2019-11-12T13:37:06-05:00"}
+{"level":"debug","msg":"loadOutputTemplateFile(): reading argparser output template from: output.tmpl","time":"2019-11-12T13:37:06-05:00"}
+
+##vso[task.setvariable variable=arg1]arg1default
+
+##vso[task.setvariable variable=arg2]hi
+
+##vso[task.setvariable variable=arg3]2
+
+##vso[task.setvariable variable=arg4]false
+```
+
 ### Hook it up in an Azure pipeline task
 
 ```
@@ -79,4 +95,18 @@ We can see it validates the arguments and converts them to Azure *log commands* 
         echo $(arg2)
         echo $(arg3)
         echo $(arg4)
+```
+
+## Important behavior notes
+
+Parsing starts at the first token after the command that begins with a dash/hypen `-` character
+```
+# OK: gets all args
+./gitops-argparser whatever text -arg1 x -arg2 y
+
+# OK: gets all args
+./gitops-argparser whatever text -arg1 x -arg2 y some trailing text
+
+# NOT OK: stops parsing on first NON argument (only captures -arg1)
+./gitops-argparser whatever text -arg1 x other-non-quoted-text -arg2 y some trailing text
 ```
