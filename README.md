@@ -1,5 +1,7 @@
 # gitops-argparser
 
+[![Build Status](https://travis-ci.org/bitsofinfo/gitops-argparser.svg?branch=master)](https://travis-ci.org/bitsofinfo/gitops-argparser)
+
 This project provides a simple utility that can be used in gitops driven CI/CD processes which support setting variables via echoing and/or writing specific syntaxes to STDOUT. The utility was created to support the idea of defining and enforcing custom CI/CD *arguments* that developers can decorate within git commit messages which would then be used to alter default CI/CD behavior. 
 
 `gitops-argparser` permits you to define your available arguments, expected types, default values etc in a YAML file, and then be invoked with any set of those arguments, and it will emit custom output using a golang template with [Sprig functions support](https://github.com/Masterminds/sprig).
