@@ -10,7 +10,7 @@ Azure DevOps pipelines supports [Logging Commands](https://github.com/microsoft/
 
 ### Lets define our supported commit message arguments
 
-Create a file called `config.yaml`
+Create a file called `config.yaml`, the location of this file defaults to the local dir but can be overriden with the ENV var: `COMMIT_MSG_ARGPARSER_CONFIG_FILE`
 
 ```
 arguments:
@@ -34,7 +34,7 @@ arguments:
 
 ### Lets define how we will handle the args in a template
 
-Create a file called `output.tmpl`. This is a [golang text/template](https://golang.org/pkg/text/template/) with [Sprig functions support](https://github.com/Masterminds/sprig)
+Create a file called `output.tmpl`. This is a [golang text/template](https://golang.org/pkg/text/template/) with [Sprig functions support](https://github.com/Masterminds/sprig). The location of this file defaults to the local dir but can be overriden with the ENV var: `COMMIT_MSG_ARGPARSER_OUTPUT_TMPL_FILE`
 ```
 {{ range $arg := .Arguments }}
 ##vso[task.setvariable variable={{$arg.Name}}]{{$arg.Value}}
@@ -132,3 +132,5 @@ Parsing starts at the first token after the command that begins with a dash/hype
 # NOT OK: stops parsing on first NON argument (only captures -arg1)
 ./gitops-argparser whatever text -arg1 x other-non-quoted-text -arg2 y some trailing text
 ```
+
+Also note golangs [flag](https://golang.org/pkg/flag/) documentation; in particular how `bool` arguments are interpreted. Its important you set them w/ `-arg=[boolvalue]` syntax as `-arg [boolvalue]` does not work w/ them.
