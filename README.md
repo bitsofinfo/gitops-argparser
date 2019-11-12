@@ -45,8 +45,10 @@ Create a file called `output.tmpl`
 ### Lets run it manually to simulate a commit message being processed
 
 ```
-{"level":"debug","msg":"loadArgumentsConf(): reading argparser arguments conf from: config.yaml","time":"2019-11-12T13:24:51-05:00"}
-{"level":"debug","msg":"loadOutputTemplateFile(): reading argparser output template from: output.tmpl","time":"2019-11-12T13:24:51-05:00"}
+> ./gitops-argparser some raw commit message value -arg1 arg1value -arg2 arg2val -arg3 9999 -arg4=false
+
+{"level":"debug","msg":"loadArgumentsConf(): reading argparser arguments conf from: config.yaml","time":"2019-11-12T13:33:43-05:00"}
+{"level":"debug","msg":"loadOutputTemplateFile(): reading argparser output template from: output.tmpl","time":"2019-11-12T13:33:43-05:00"}
 
 ##vso[task.setvariable variable=arg1]arg1value
 
