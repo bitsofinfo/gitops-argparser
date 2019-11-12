@@ -1,0 +1,3 @@
+{{ range $arg := .Arguments }}
+##vso[task.setvariable variable={{$arg.Name}}]{{$arg.Value}}
+{{ end }}
