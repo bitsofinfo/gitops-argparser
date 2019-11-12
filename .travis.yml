@@ -16,10 +16,10 @@ addons:
 env:
   global:
     - PATH=/snap/bin:$PATH
-    - GOMODULE=off
-    - GO111MODULE=off
+    - GOMODULE=auto
+    - GO111MODULE=auto
     - secure: "hRIPpXctbTrvusyG8x0PFONQ3nBG5jwItf/TW2QN8fl1xMixfqXU1WWSXHNQgO1Niy6LYGbUcgrDoaMWQwM7L07jKeLYQTXrrI3JQqVrj45w+oXxDdcTNZnC+2/ApXdri/hrefXRkloTZ/xG/ohSdqPTzYBgIo7m/xk3qq24ebS9QYj4zE76T6OzxEEwB6RY3JvzX2vs19Gdsia3H4iWhOE1cSGgJ8mztGUoOOdjQ2OKaCulGaEf86kTNm1l8PdDk8CI6xtLYB01uRHF2T0S98pYgztql06wt7XXyJZ6qffQiKGadqFlZPHKrA0mmtNjKDjXakW1d+ROp9ztgu+hbTrhmtTUzQLP1C7wC+iTJUVlTpd0RbLcI5VxyUXalYuHIiYdm64AaKgcqTZ12Oa1TYhWHH+76gJguthuu86A2hRqq21qALRYm0otRUphMJBQnGrFqpK+UNy7U6+AQmOSeVAEJeTbLG8UNXXwJbyp7AQPXnBvw5QGwNE+gCN8rmCDAIH0MZZDSMM/+F6ZqW6XMHuQx9sVee/dM1Mp1VSxTKKOtoSVsxptv4/GEFvsGyUGvC7xhT+aORk4a+b8J4Vcgr2ou9bXQsZZgUphSaYb8sLgB4cvVIwjJfLeH/U2Reqywjn6udklTPDhEvrMWI3/aR/lAe8hfug6XFLQb0bxD0g="
-    
+
 install:
 - sudo snap install snapcraft --classic
 
