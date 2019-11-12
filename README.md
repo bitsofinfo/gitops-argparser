@@ -78,6 +78,7 @@ If you call it with nothing you get the defaults:
 
 ### Hook it up in an Azure pipeline task
 
+Process a normal a commit message:
 ```
 ...
 
@@ -85,6 +86,28 @@ If you call it with nothing you get the defaults:
     displayName: Parse commit message args
     targetType: 'Inline'
     script: ./gitops-argparser $(Build.SourceVersionMessage)
+
+- task: Bash@3
+    displayName: Print pipeline vars from commit message args
+    targetType: 'Inline'
+    script: | 
+        echo $(arg1)
+        echo $(arg2)
+        echo $(arg3)
+        echo $(arg4)
+```
+
+Process an annotated tag message:
+```
+...
+
+- task: Bash@3
+    displayName: Parse commit message args
+    targetType: 'Inline'
+    script: |
+      export GIT_TAG_MSG=`git tag -l --format='%(contents:lines=1)' $(Build.SourceBranchName)`
+      echo "GIT_TAG_MSG=$GIT_TAG_MSG"
+      ./gitops-argparser $GIT_TAG_MSG
 
 - task: Bash@3
     displayName: Print pipeline vars from commit message args
