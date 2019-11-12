@@ -34,8 +34,7 @@ arguments:
 
 ### Lets define how we will handle the args in a template
 
-Create a file called `output.tmpl`
-
+Create a file called `output.tmpl`. This is a [golang text/template](https://golang.org/pkg/text/template/) with [Sprig functions support](https://github.com/Masterminds/sprig)
 ```
 {{ range $arg := .Arguments }}
 ##vso[task.setvariable variable={{$arg.Name}}]{{$arg.Value}}
