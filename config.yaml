@@ -1,21 +1,17 @@
 arguments:
-  
   - long: arg1
     dataType: string
     help: This is argument number one
     defaultValue: arg1default
-
   - long: arg2
     dataType: string
     help: This is argument number two
     defaultValue: "hi"
-
   - long: arg3
     dataType: int
     help: This is argument number three
     defaultValue: 2
-
   - long: arg4
     dataType: bool
     help: This is argument number four
-    defaultValue: false
+    defaultValue: true

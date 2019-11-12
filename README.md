@@ -29,7 +29,7 @@ arguments:
   - long: arg4
     dataType: bool
     help: This is argument number four
-    defaultValue: false
+    defaultValue: true
 ```
 
 ### Lets define how we will handle the args in a template
@@ -44,10 +44,10 @@ Create a file called `output.tmpl`. This is a [golang text/template](https://gol
 ### Lets run it manually to simulate a commit message being processed
 
 ```
-> ./gitops-argparser some raw commit message value -arg1 arg1value -arg2 arg2val -arg3 9999 -arg4=false
+> ./gitops-argparser some raw commit message value -arg1 arg1value -arg2 arg2val -arg3 9999 -arg4=true
 
-{"level":"debug","msg":"loadArgumentsConf(): reading argparser arguments conf from: config.yaml","time":"2019-11-12T13:33:43-05:00"}
-{"level":"debug","msg":"loadOutputTemplateFile(): reading argparser output template from: output.tmpl","time":"2019-11-12T13:33:43-05:00"}
+{"level":"debug","msg":"loadArgumentsConf(): reading argparser arguments conf from: config.yaml","time":"2019-11-12T13:59:09-05:00"}
+{"level":"debug","msg":"loadOutputTemplateFile(): reading argparser output template from: output.tmpl","time":"2019-11-12T13:59:09-05:00"}
 
 ##vso[task.setvariable variable=arg1]arg1value
 
@@ -55,7 +55,7 @@ Create a file called `output.tmpl`. This is a [golang text/template](https://gol
 
 ##vso[task.setvariable variable=arg3]9999
 
-##vso[task.setvariable variable=arg4]false
+##vso[task.setvariable variable=arg4]true
 ```
 
 We can see it validates the arguments and converts them to Azure *log commands* which will set variables in a pipeline.
@@ -64,8 +64,8 @@ If you call it with nothing you get the defaults:
 ```
 > ./gitops-argparser 
 
-{"level":"debug","msg":"loadArgumentsConf(): reading argparser arguments conf from: config.yaml","time":"2019-11-12T13:37:06-05:00"}
-{"level":"debug","msg":"loadOutputTemplateFile(): reading argparser output template from: output.tmpl","time":"2019-11-12T13:37:06-05:00"}
+{"level":"debug","msg":"loadArgumentsConf(): reading argparser arguments conf from: config.yaml","time":"2019-11-12T13:59:20-05:00"}
+{"level":"debug","msg":"loadOutputTemplateFile(): reading argparser output template from: output.tmpl","time":"2019-11-12T13:59:20-05:00"}
 
 ##vso[task.setvariable variable=arg1]arg1default
 
@@ -73,7 +73,7 @@ If you call it with nothing you get the defaults:
 
 ##vso[task.setvariable variable=arg3]2
 
-##vso[task.setvariable variable=arg4]false
+##vso[task.setvariable variable=arg4]true
 ```
 
 ### Hook it up in an Azure pipeline task
